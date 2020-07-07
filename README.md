@@ -1,19 +1,40 @@
-# pomodoro
+# pomodoro 番茄鐘
 
-## Project setup
+## APP 簡介
 ```
-npm install
-```
+番茄鐘，顧名思義，~~用番茄做的鐘~~
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+唐鳳最愛工作法則
 
-### Compiles and minifies for production
-```
-npm run build
+選擇你要工作的項目後，就給他專注工作 25 分鐘，然後在好好給他休息 5 分鐘
+
+每日服三次，瘦仔變肥仔
+
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 使用方式
+```
+1. 先建立你要做的工作項目
+
+2. 於 Nav 音樂欄位點選你要的工作、休息聲音
+
+3. 可以開始工作摟 ~ 點選圓圈圈的開始按鈕
+
+4. 25 分鐘到後提示音響起，切換至 5 分鐘休息模式
+
+5. 5 分鐘到後提示音響起，切換至 25 分鐘休息模式
+
+6. 1 ~ 5項循環使用
+
+7. 每週、每日都會統計完成數量，並以圖表方式呈現，但每週會重新計算，顆顆
+
+8. 完成的項目可至 Nav 的 Todos 裡將完成項目勾選回來繼續
+
+9. 沒說到的可能我沒寫，請自行摸一摸
+
+```
+
+## 使用技術
+```
+Vue 3, vuex, axios, localStorage, rwd & 五星級專業糞Code 
+```
