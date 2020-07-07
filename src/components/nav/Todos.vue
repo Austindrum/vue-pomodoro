@@ -18,12 +18,12 @@
                 <ul>
                     <li v-for="active in getActiveTodo" :key="active.id">
                         <div>
-                            <span @click="checkTodo(active.id, active.isComplete)">
+                            <span class="check" @click="checkTodo(active.id, active.isComplete)">
                                 <fa-icon :icon="['far', 'check-square']" />
                             </span>
                             <span>{{ active.title }}</span>
                         </div>
-                        <div @click="deleteTodo(active.id, active.isComplete)">
+                        <div class="delete" @click="deleteTodo(active.id, active.isComplete)">
                             <fa-icon :icon="['far', 'trash-alt']" />
                         </div>
                     </li>
@@ -41,10 +41,10 @@
                 <ul>
                     <li v-for="done in getDoneTodo" :key="done.id">
                         <div>
-                            <span @click="checkTodo(done.id, done.isComplete)"><fa-icon :icon="['far', 'check-square']" /></span>
+                            <span class="check" @click="checkTodo(done.id, done.isComplete)"><fa-icon :icon="['far', 'check-square']"/></span>
                             <span>{{ done.title }}</span>
                         </div>
-                        <div @click="deleteTodo(done.id, done.isComplete)"><fa-icon :icon="['far', 'trash-alt']" /></div>
+                        <div class="delete" @click="deleteTodo(done.id, done.isComplete)"><fa-icon :icon="['far', 'trash-alt']" /></div>
                     </li>
                 </ul>
             </div>
@@ -209,6 +209,15 @@ export default {
                         justify-content: space-between;
                         span{
                             margin-right: 10px;
+                        }
+                        .check, .delete{
+                            cursor: pointer;
+                        }
+                        .check:hover{
+                            color: orange
+                        }
+                        .delete:hover{
+                            color: red;
                         }
                     }
                 }        

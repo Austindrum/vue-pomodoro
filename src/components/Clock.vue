@@ -205,13 +205,6 @@ export default {
                     message: '請註明代辦事項名稱',
                 })
                 this.toogleAlert();
-                // alert("請註明代辦事項名稱");
-                // this.flashMessage.show({
-                //     status: 'error',
-                //     title: '沒有標題',
-                //     message: '請註明代辦事項名稱',
-                //     blockClass: 'message'
-                // });
             }else{
                 let localTodos = JSON.parse(localStorage.getItem("pomodoroTodos"));
                 let tempNewTodo = {
@@ -304,14 +297,20 @@ export default {
                             that.setTodayDone();
                             that.setWeekDone();
                             that.setChartData();
-                            this.flashMessage.show({
+                            this.setAlertMessage({
                                 status: 'success',
                                 title: '時間到達',
-                                message: '您這項工作持續25分鐘，請按我停止音樂並休息一下喔'
-                            },
-                            {
-                                destroyed: this.reset
-                            });
+                                message: '您這項工作持續25分鐘，請按我停止音樂並休息一下喔',
+                            })
+                            this.toogleAlert();
+                            // this.flashMessage.show({
+                            //     status: 'success',
+                            //     title: '時間到達',
+                            //     message: '您這項工作持續25分鐘，請按我停止音樂並休息一下喔'
+                            // },
+                            // {
+                            //     destroyed: this.reset
+                            // });
                         }
                     }else{
                         if(that.time.break > 0){
@@ -329,14 +328,20 @@ export default {
                             that.timeMachine = null;
                             that.playSound(status);
                             this.$store.state.isWorking = !this.$store.state.isWorking;
-                            this.flashMessage.show({
-                                status: 'success',
+                            this.setAlertMessage({
+                                status: 'warning',
                                 title: '休息結束',
-                                message: '您已休息5分鐘，請按我停止音樂並開始工作搂'
-                            },
-                            {
-                                destroyed: this.reset
-                            });
+                                message: '您已休息5分鐘，請按我停止音樂並開始工作搂',
+                            })
+                            this.toogleAlert();
+                            // this.flashMessage.show({
+                            //     status: 'success',
+                            //     title: '休息結束',
+                            //     message: '您已休息5分鐘，請按我停止音樂並開始工作搂'
+                            // },
+                            // {
+                            //     destroyed: this.reset
+                            // });
                         }
                     }
                 }, 1000)
@@ -572,8 +577,8 @@ export default {
         position: relative;
     }
     .clock-content{
-        position: fixed;
-        top: 120px;
+        position: absolute;
+        top: 40px;
         right: 60px;
         width: 300px;
         height: 300px;
@@ -835,7 +840,7 @@ export default {
             }
         }
         .clock{
-            margin-top: 80px;
+            margin-top: 60px;
             margin-left: 100px;
             .clock-content{
                 right: 15%;

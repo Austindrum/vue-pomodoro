@@ -16,8 +16,8 @@ export default new Vuex.Store({
     activeTodos: [],
     doneTodos: [],
     time:{
-      work: .1*60,
-      break: .1*60
+      work: 25*60,
+      break: 5*60
     },
     isWorking: true,
     workSound: '',
@@ -200,15 +200,15 @@ export default new Vuex.Store({
     },
     resetAll(state){
       state.isWorking = true;
-      state.time.work = .1*60;
-      state.time.break = .1*60;
+      state.time.work = 25*60;
+      state.time.break = 25*60;
       state.strokeDashoffset = document.body.clientWidth > 900 ? 237*2*3.14 : 143*2*3.14;
       state.width300 = 143*2*3.14;
       state.width500 = 237*2*3.14;
     },
     reset(state){
-      state.time.work = .1*60;
-      state.time.break = .1*60;
+      state.time.work = 25*60;
+      state.time.break = 5*60;
       state.strokeDashoffset = document.body.clientWidth > 900 ? 237*2*3.14 : 143*2*3.14;
       state.width300 = 143*2*3.14;
       state.width500 = 237*2*3.14;

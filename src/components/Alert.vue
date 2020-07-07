@@ -3,7 +3,7 @@
         <div class="outer">
             <div class="background"></div>
             <div class="message-block">
-                <div class="message" @click="toogleAlert" :class="alertStatus">
+                <div class="message" @click="active" :class="alertStatus">
                     <h2>{{ alertMessage.title }}</h2>
                     <p>{{ alertMessage.message }}</p>
                 </div>
@@ -25,6 +25,12 @@ export default {
                 case "error":
                     return "error"
                     break;
+                case "success":
+                    return "success"
+                    break;
+                case "warning":
+                    return "warning"
+                    break;
                 default:
                     break;
             }
@@ -33,7 +39,12 @@ export default {
     methods: {
         ...mapMutations([
             "toogleAlert",
-        ])
+            "reset"
+        ]),
+        active(){
+            this.toogleAlert();
+            this.reset();
+        }
     },
 }
 </script>
@@ -66,7 +77,6 @@ h2{
                 box-sizing: border-box;
                 width: 40%;
                 height: 120px;
-                background-color: #FF8C00;
                 border-radius: 10px;
                 margin-left: 55%;
                 padding: 15px;
@@ -80,6 +90,13 @@ h2{
             }
             .message.error{
                 background-color: red;
+                color: white;
+            }
+            .message.success{
+                background-color: #90EE90;
+            }
+            .message.warning{
+                background-color: orange;
                 color: white;
             }
             @keyframes message-animation {

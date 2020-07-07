@@ -5,10 +5,18 @@
         </div>
         <ul :class="{ toggle: toggleNav }">
             <li class="banner">POMODORO</li>
-            <li @click="changeNav('todo')" :style="navType == 'todo' ? 'color: orange' : ''"><fa-icon :icon="['fas', 'list']" size="lg"/></li>
-            <li @click="changeNav('chart')" :style="navType == 'chart' ? 'color: orange' : ''"><fa-icon :icon="['fas', 'chart-bar']" size="lg"/></li>
-            <li @click="changeNav('music')" :style="navType == 'music' ? 'color: orange' : ''"><fa-icon :icon="['fas', 'music']" size="lg"/></li>
-            <li @click="resetAll"><fa-icon :icon="['fas', 'history']" size="lg"/></li>
+            <li class="list" @click="changeNav('todo')" :style="navType == 'todo' ? 'color: orange' : ''">
+                <fa-icon :icon="['fas', 'list']" size="lg"/>
+            </li>
+            <li class="list" @click="changeNav('chart')" :style="navType == 'chart' ? 'color: orange' : ''">
+                <fa-icon :icon="['fas', 'chart-bar']" size="lg"/>
+            </li>
+            <li class="list" @click="changeNav('music')" :style="navType == 'music' ? 'color: orange' : ''">
+                <fa-icon :icon="['fas', 'music']" size="lg"/>
+            </li>
+            <li class="list" @click="resetAll">
+                <fa-icon :icon="['fas', 'history']" size="lg"/>
+            </li>
         </ul>
         <Chart class="nav-content" :class="navType == 'chart' ? 'show' : ''"/>
         <Todos class="nav-content" :class="navType == 'todo' ? 'show' : ''"/>
@@ -59,7 +67,12 @@ $backGroundColor: #003164;
         li{
             list-style: none;
             color: white;
+        }
+        .list{
             cursor: pointer;
+        }
+        .list:hover{
+            color: orange;
         }
         .banner{
             position: absolute;
@@ -122,7 +135,7 @@ $backGroundColor: #003164;
 }
 @media screen and (max-width: 900px) {
     .close{
-        position: fixed;
+        position: absolute;
         top: 15px;
         right: -15px;
         font-size: 20px;
@@ -133,11 +146,11 @@ $backGroundColor: #003164;
     }
     .close.toggle{
         opacity: 1;
-        position: fixed;
+        position: absolute;
         font-size: 20px;
         color: white;
         top: 15px;
-        right: 25px;
+        right: 35px;
     }
     .nav.toggle{
         height: 500px;
