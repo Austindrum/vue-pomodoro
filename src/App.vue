@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <FlashMessage :position="'right top'"></FlashMessage> -->
+    <Alert v-if="alert"/>
     <Nav />
     <Clock />
   </div>
@@ -9,12 +9,19 @@
 <script>
 import Nav from './components/Nav';
 import Clock from './components/Clock';
+import Alert from './components/Alert';
 import {mapState, mapMutations} from 'vuex';
 export default {
   name: 'App',
   components: {
     Nav,
     Clock,
+    Alert
+  },
+  computed: {
+    ...mapState([
+      "alert"
+    ])
   },
   created() {
     let dataTodos = JSON.parse(localStorage.getItem("pomodoroTodos"));

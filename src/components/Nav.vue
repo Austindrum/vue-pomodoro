@@ -52,7 +52,7 @@ $pink: #ff4384;
 $backGroundColor: #003164;
 .nav{
     background-color: $backGroundColor;
-    z-index: 3000;
+    z-index: 1;
     ul{
         margin: 0;
         padding: 0;

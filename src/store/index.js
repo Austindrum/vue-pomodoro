@@ -5,6 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    alert: false,
+    alertMessage: {
+      status: "",
+      title: "",
+      message: ""
+    },
     toggleNav: false,
     navType: "",
     activeTodos: [],
@@ -117,6 +123,19 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    toogleAlert(state){
+      state.alert = !state.alert;
+      if(state.alert == false){
+        state.alertMessage.status = "";
+        state.alertMessage.title = "";
+        state.alertMessage.message = "";  
+      }
+    },
+    setAlertMessage(state, payload){
+      state.alertMessage.status = payload.status;
+      state.alertMessage.title = payload.title;
+      state.alertMessage.message = payload.message;
+    },
     setTodayDone(state){
       state.todayDone += 1;
     },

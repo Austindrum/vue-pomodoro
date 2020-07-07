@@ -64,7 +64,9 @@ export default {
         }
     },
     computed: {
-        ...mapState(["toggleNav"]),
+        ...mapState([
+            "toggleNav",
+        ]),
         getActiveTodo(){
             return this.$store.getters.getActiveTodo;
         },
@@ -75,14 +77,22 @@ export default {
     methods: {
         ...mapMutations([
             "addTodoToActiveTodo",
+            "setAlertMessage",
+            "toogleAlert"
         ]),
         addNewTodo(){
             if(this.newTodo == ""){
-                this.flashMessage.show({
+                this.setAlertMessage({
                     status: 'error',
                     title: '沒有標題',
-                    message: '請註明代辦事項名稱'
-                });
+                    message: '請註明代辦事項名稱',
+                })
+                this.toogleAlert();
+                // this.flashMessage.show({
+                //     status: 'error',
+                //     title: '沒有標題',
+                //     message: '請註明代辦事項名稱'
+                // });
             }else{
                 let localTodos = JSON.parse(localStorage.getItem("pomodoroTodos"));
                 let tempNewTodo = {

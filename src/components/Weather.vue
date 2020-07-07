@@ -75,10 +75,9 @@ export default {
             return result;
         }
     },
-    mounted() {
+    created() {
         this.axios.get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-015?Authorization=CWB-418C5921-689A-4793-A78B-7D3027C772CD")
         .then(res=>{
-            console.log(res.data.records.locations[0].location[14]);
             let head = res.data.records.locations[0];
             this.locationName = head.locationsName;
             this.location = head.location[14].locationName;

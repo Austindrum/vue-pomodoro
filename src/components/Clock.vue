@@ -1,8 +1,5 @@
 <template>
     <div class="clock">
-        <div class="message">
-            <FlashMessage :position="'right top'"></FlashMessage>
-        </div>
         <Weather v-if="clientWidth < 611"/>
         <div class="clock-content" :class="[isWorking ? 'working' : 'breaking']">
             <svg class="clock-inner" :width="width" :height="height">
@@ -185,6 +182,7 @@ export default {
     },
     methods: {
         ...mapMutations([
+            "toogleAlert",
             "addTodoToActiveTodo",
             "changeNav",
             "setStrokeDashoffset",
@@ -196,15 +194,24 @@ export default {
             "checkTodo",
             "setTodayDone",
             "setWeekDone",
-            "setChartData"
+            "setChartData",
+            "setAlertMessage"
         ]),
         addNewTodo(){
             if(this.newTodo == ""){
-                this.flashMessage.show({
+                this.setAlertMessage({
                     status: 'error',
                     title: '沒有標題',
                     message: '請註明代辦事項名稱',
-                });
+                })
+                this.toogleAlert();
+                // alert("請註明代辦事項名稱");
+                // this.flashMessage.show({
+                //     status: 'error',
+                //     title: '沒有標題',
+                //     message: '請註明代辦事項名稱',
+                //     blockClass: 'message'
+                // });
             }else{
                 let localTodos = JSON.parse(localStorage.getItem("pomodoroTodos"));
                 let tempNewTodo = {
@@ -356,6 +363,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .message{
+    z-index: 9999 !important;
 }
 .rwd-over-610{
     .add-todo{
