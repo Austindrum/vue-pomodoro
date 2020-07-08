@@ -159,10 +159,10 @@ export default {
         h1{
             margin: 0;
             .title{
-                font-size: 40px;
+                font-size: 35px;
             }
             .location{
-                font-size: 25px;
+                font-size: 20px;
                 color: #A9A9A9;
             }
         }

@@ -24,7 +24,7 @@ export default {
     ])
   },
   created() {
-    let dataTodos = JSON.parse(localStorage.getItem("pomodoroTodos"));
+    let dataTodos = JSON.parse(localStorage.getItem("pomodoroTodos")) ? JSON.parse(localStorage.getItem("pomodoroTodos")) : [];
     let sunday = 0;
     let monday = 0;
     let today = new Date(Date.now());
@@ -63,19 +63,21 @@ export default {
           break;
     }
     let setTodos = [];
-    dataTodos.forEach(todo => {
-      let tempCompletedDate = [];
-      let tempCompletedTime = 0;
-      todo.completedDate.forEach(date=>{
-        if(date > monday){
-          tempCompletedDate.push(date);
-          tempCompletedTime += 1;
-        }
-      })
-      todo.completedDate = tempCompletedDate;
-      todo.completedTime = tempCompletedTime;
-      setTodos.push(todo);
-    });
+    if(dataTodos.length > 0){
+      dataTodos.forEach(todo => {
+        let tempCompletedDate = [];
+        let tempCompletedTime = 0;
+        todo.completedDate.forEach(date=>{
+          if(date > monday){
+            tempCompletedDate.push(date);
+            tempCompletedTime += 1;
+          }
+        })
+        todo.completedDate = tempCompletedDate;
+        todo.completedTime = tempCompletedTime;
+        setTodos.push(todo);
+      });
+    }
     localStorage.setItem("pomodoroTodos", JSON.stringify(setTodos));
   }
 }

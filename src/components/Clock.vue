@@ -756,8 +756,12 @@ export default {
         }
     }
     .clock{
-        margin-top: 120px;
-        margin-left: 10px;
+        margin-top: 80px;
+        margin-left: 30px;
+        .clock-content{
+            top: 150px;
+            right: 120px;
+        }
         .rwd-over-610{
             width: 320px;
             .time{
