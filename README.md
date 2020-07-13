@@ -32,11 +32,9 @@
 
 8. 完成的項目可至 Nav 的 Todos 裡將完成項目勾選回來繼續
 
-9. 沒說到的可能我忘了，請自行摸一摸
-
 ----
 
 ## 使用技術
 ----
-Vue 3, vuex, axios, localStorage, rwd & 五星級專業糞Code 
+Vue 3, vuex, axios, localStorage, rwd 
 ----
