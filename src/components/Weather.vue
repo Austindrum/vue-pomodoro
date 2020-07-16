@@ -37,6 +37,8 @@ export default {
     },
     methods: {
         countDateTime(status ,start, end){
+            // + " " + new Date(end).getTime() + " " +
+            // console.log(new Date(start).getTime(), this.now);            
             if(new Date(start).getTime() < this.now && new Date(end).getTime() > this.now){
                 return true;
             }else{
@@ -76,14 +78,16 @@ export default {
         }
     },
     created() {
-        this.axios.get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-015?Authorization=CWB-418C5921-689A-4793-A78B-7D3027C772CD")
+        this.axios.get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=CWB-418C5921-689A-4793-A78B-7D3027C772CD")
         .then(res=>{
             let head = res.data.records.locations[0];
             this.locationName = head.locationsName;
-            this.location = head.location[14].locationName;
-            this.rain = this.getRain(head.location[14].weatherElement[0]);
-            this.temperature = this.getTemperature(head.location[14].weatherElement[1]);
-            this.weather = this.getWeather(head.location[14].weatherElement[6]);
+            this.location = head.location[5].locationName;
+            this.rain = this.getRain(head.location[5].weatherElement[0]);
+            // console.log(head.location[5].weatherElement[0]);
+            this.temperature = this.getTemperature(head.location[5].weatherElement[1]);
+            this.weather = this.getWeather(head.location[5].weatherElement[6]);
+            
         })
     },
 }
