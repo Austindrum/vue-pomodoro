@@ -37,9 +37,14 @@ export default {
     },
     methods: {
         countDateTime(status ,start, end){
-            // + " " + new Date(end).getTime() + " " +
-            // console.log(new Date(start).getTime(), this.now);            
             if(new Date(start).getTime() < this.now && new Date(end).getTime() > this.now){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        dataTime(status, dataTime){
+            if(new Date(dataTime).getTime() < this.now){
                 return true;
             }else{
                 return false;
@@ -48,7 +53,7 @@ export default {
         getTemperature(temperature){
             let result = {};
             temperature.time.forEach(t=>{
-                if(this.countDateTime(t, t.startTime, t.endTime)){
+                if(this.dataTime(t, t.dataTime)){
                     result = t.elementValue[0];
                 }
             })
@@ -84,10 +89,8 @@ export default {
             this.locationName = head.locationsName;
             this.location = head.location[5].locationName;
             this.rain = this.getRain(head.location[5].weatherElement[0]);
-            // console.log(head.location[5].weatherElement[0]);
-            this.temperature = this.getTemperature(head.location[5].weatherElement[1]);
-            this.weather = this.getWeather(head.location[5].weatherElement[6]);
-            
+            this.temperature = this.getTemperature(head.location[5].weatherElement[3]);
+            this.weather = this.getWeather(head.location[5].weatherElement[1]);
         })
     },
 }
